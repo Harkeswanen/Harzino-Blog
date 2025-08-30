@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg) scale(1); 
+  }
+  50% { 
+    transform: translateY(-12px) rotate(2deg) scale(1.05); 
+  }
+}
+
+@keyframes float2 {
+  0%, 100% { 
+    transform: translateY(12px) rotate(2deg) scale(1.1); 
+  }
+  50% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+  }
+}
+
+@keyframes scale {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.3;
+  }
+  50% { 
+    transform: scale(1.1); 
+    opacity: 0.8;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: translateY(0); 
+  }
+  50% { 
+    transform: translateY(-20px); 
+  }
+  
+}
+
+@keyframes bounce2 {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-20px); 
+  }
+  
+}
+
+@keyframes float3 {
+  0%, 100% { 
+    transform: translateY(-12px) rotate(-3deg) scale(1); 
+  }
+  50% { 
+    transform: translateY(0px) rotate(0deg) scale(1.05); 
+  }
+}
+
+.float-animation {
+  animation: float 5s ease-in-out infinite;
+}
+
+.float-animation-2 {
+  animation: float2 6s ease-in-out infinite;
+}
+.float-animation-3 {
+  animation: float3 7s ease-in-out infinite;
+}
+
+.scale-animation {
+  animation: scale 4s ease-in-out infinite;
+}
+.bounce-animation {
+  animation: bounce 4s ease-in-out infinite;
+}
+.bounce-animation-2 {
+  animation: bounce2 4s ease-in-out infinite;
+}
+
+@keyframes gradient-flow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-animation {
+  background-size: 600% 600%;
+  animation: gradient-flow 8s ease infinite;
+}
