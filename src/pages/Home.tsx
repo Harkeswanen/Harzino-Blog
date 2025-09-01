@@ -21,8 +21,6 @@ interface ImageData {
   left?: string | number;
   right?: string | number;
   bottom?: string | number;
-  width?: string | number;
-  height?: string | number;
   initial?: string | object;
   animate?: unknown;
   tailwindClass: string;
@@ -32,6 +30,7 @@ interface ImageData {
   content?: string;
   tags?: string[];
   featured: true | false;
+  responsiveClasses?: string;
 }
 
 export default function Home() {
@@ -41,10 +40,8 @@ export default function Home() {
       title: "The GPU Revolution",
       topic: "Hardware & AI",
       alt: "An NVIDIA GPU.",
-      top: "10%",
-      right: "12%",
-      width: "250px",
-      height: "150px",
+      top: "15%",
+      right: "8%",
       initial: { opacity: 0, scale: 0.5 },
       animate: {
         opacity: 1,
@@ -62,16 +59,15 @@ export default function Home() {
       <p>This shift has democratized access to powerful computing, allowing startups and researchers to train complex models without the need for supercomputers. The innovation cycle in both hardware and AI has accelerated dramatically as a result.</p>
     `,
       tags: ["hardware", "ai", "machine-learning"],
+      responsiveClasses: "w-[123px] h-[77px] md:w-[150px] md:h-[90px] lg:w-[180px] lg:h-[110px]",
     },
     {
       src: waveImg,
       title: "Waves of Code",
       topic: "Generative Art",
       alt: "A digital wave pattern.",
-      top: "9%",
-      left: "2%",
-      width: "300px",
-      height: "150px",
+      top: "6%",
+      left: "0.5%",
       initial: { opacity: 0, y: -50 },
       animate: { opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.8 } },
       tailwindClass: "float-animation",
@@ -92,16 +88,15 @@ export default function Home() {
     `,
       tags: ["artificial intelligence", "development", "automation"],
       featured: true,
+      responsiveClasses: "w-48 h-28 sm:w-56 sm:h-32 lg:w-64 lg:h-36",
     },
     {
       src: workoutImg,
       title: "Fitness Tracking",
       topic: "Mobile App Development",
       alt: "A person working out.",
-      bottom: "10%",
+      top: "75%",
       right: "15%",
-      width: "150px",
-      height: "110px",
       initial: { opacity: 0, y: 50 },
       animate: { opacity: 1, y: 0, transition: { delay: 1.8, duration: 0.8 } },
       tailwindClass: "float-animation",
@@ -114,18 +109,16 @@ export default function Home() {
     `,
       tags: ["mobile-app", "development", "fitness"],
       featured: false,
+      responsiveClasses: "w-32 h-20 sm:w-40 sm:h-24 lg:w-44 lg:h-26 ",
     },
     {
       src: footballImg,
       title: "Football Analytics",
       topic: "Data Science",
       alt: "A football pitch with data points.",
-      bottom: "11%",
-      left: "10%",
-      width: "300px",
-      height: "180px",
+      top: "60%",
+      left: "3.5%",
       featured: true,
-
       initial: { opacity: 0, y: 50 },
       animate: { opacity: 1, y: 0, transition: { delay: 0.6, duration: 0.8 } },
       tailwindClass: "float-animation-3",
@@ -137,16 +130,15 @@ export default function Home() {
       <p>From predictive analytics on player injuries to optimizing in-game strategies, data is now as crucial as a star player. This new era of football is all about using insights to win.</p>
     `,
       tags: ["data-science", "sports", "analytics"],
+      responsiveClasses: "w-40 h-24 sm:w-48 sm:h-28 lg:w-52 lg:h-30 ",
     },
     {
       src: codeImg,
       title: "Web Dev Workflow",
       topic: "Frontend Development",
       alt: "A code editor with lines of code.",
-      top: "33%",
-      left: "20%",
-      width: "180px",
-      height: "100px",
+      top: "25%",
+      left: "18.5%",
       initial: { opacity: 0, y: 50 },
       animate: { opacity: 1, y: 0, transition: { delay: 0.9, duration: 0.8 } },
       tailwindClass: "float-animation-2",
@@ -159,18 +151,16 @@ export default function Home() {
     `,
       tags: ["frontend", "web-dev", "workflow"],
       featured: false,
+      responsiveClasses: "w-32 h-20 sm:w-40 sm:h-24 lg:w-44 lg:h-26",
     },
     {
       src: tableImg,
       title: "Tablet Sketchbook",
       topic: "UI/UX Design",
       alt: "A tablet with a design sketch.",
-      top: "35%",
-      right: "5%",
+      top: "45%",
+      right: "0.5%",
       featured: false,
-
-      width: "250px",
-      height: "150px",
       initial: { opacity: 0, y: 50 },
       animate: { opacity: 1, y: 0, transition: { delay: 1.2, duration: 0.8 } },
       tailwindClass: "float-animation-3",
@@ -182,6 +172,7 @@ export default function Home() {
       <p>Designers can now rapidly prototype ideas, gather feedback, and iterate on their designs with unprecedented speed. The tablet acts as a digital canvas, enabling creativity without the limitations of traditional tools.</p>
     `,
       tags: ["ui/ux", "design", "prototyping"],
+      responsiveClasses: "w-48 h-28 sm:w-56 sm:h-32 lg:w-64 lg:h-36 ",
     },
   ];
 
@@ -195,7 +186,7 @@ export default function Home() {
           block: 'start'
         });
       }
-    }, 5000);
+    }, 4000);
 
 
     return () => clearTimeout(timer);
@@ -205,7 +196,7 @@ export default function Home() {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 768); 
+      setIsSmallScreen(window.innerWidth < 768);
     };
 
     checkScreenSize();
@@ -230,21 +221,20 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <section className="relative w-full min-h-screen flex flex-col justify-center items-center text-center bg-black text-white overflow-hidden px-6">
-        <div className="absolute center w-[90vw] h-[100vh] ">
+      <section className="relative w-full min-h-screen flex flex-col justify-center items-center text-center bg-black text-white overflow-hidden ">
           {images.map((img, index) =>
-            isSmallScreen && index % 2 === 0 ? null : (
+            (
               <motion.div
                 key={index}
                 onClick={() => handleImageClick(img)}
-                className={`group border border-zinc-600 rounded-lg shadow-lg ${img.tailwindClass} z-10 cursor-pointer overflow-hidden absolute`}
+                className={`group border border-zinc-600 rounded-lg shadow-lg
+                            ${img.tailwindClass} z-10 cursor-pointer overflow-hidden absolute
+                            ${img.responsiveClasses}`}
                 style={{
                   top: img.top,
                   left: img.left,
                   right: img.right,
                   bottom: img.bottom,
-                  width: img.width,
-                  height: img.height,
                 }}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -254,7 +244,7 @@ export default function Home() {
                 <img
                   src={img.src}
                   alt={img.alt}
-                  className={`rounded-lg shadow-lg transform transition-transform duration-500 w-full h-full object-cover group-hover:scale-110`}
+                  className={`rounded-lg shadow-lg transform transition-transform duration-500 object-cover group-hover:scale-110`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col justify-end text-left p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <p className="text-white font-semibold text-sm leading-tight mb-1">
@@ -267,23 +257,19 @@ export default function Home() {
               </motion.div>
             )
           )}
-        </div>
 
         <motion.div
-          className="absolute bottom-[15%] right-[33%] h-[60px] w-[50px] 
-               rounded-lg border border-zinc-600
-               bg-gradient-to-br from-[#260e1e] to-[#1f0f2c] 
-               backdrop-blur-sm bg-opacity-70 scale-animation"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 0.3, y: 0 }}
+          className="bg-opacity-70 scale-animation absolute bottom-10
+           right-1/3 w-12 h-16 bg-gradient-to-br from-[#dc0073]/20 to-purple-600/20
+           rounded-lg backdrop-blur-lg border border-[#dc0073]/30 z-100"
+          initial={{ opacity: 0.6, y: 50 }}
+          whileInView={{ opacity: 0.8, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 2.2, duration: 0.8 }}
         ></motion.div>
 
         <motion.div
-          className="absolute top-20 left-112 h-[110px] w-[70px] 
-               rounded-lg bg-[#202020] border border-zinc-600
-               backdrop-blur-xl z-10 bg-opacity-70"
+          className="absolute top-10 left-[30%] w-16 h-24 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20 z-80"
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -296,7 +282,7 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0, duration: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-light max-w-3xl leading-tight z-90"
+          className="text-3xl md:text-5xl lg:text-6xl font-light text-white mb-8 leading-tight max-w-3xl mx-auto z-90"
         >
           <motion.span
             initial={{ opacity: 0, y: 40 }}
@@ -333,7 +319,7 @@ export default function Home() {
           viewport={{ once: true }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 1.8, duration: 1 }}
-          className="mt-6 text-zinc-400 italic z-90"
+          className="text-lg text-[#bebebc] italic max-w-2xl mx-auto z-90"
         >
           "I am always doing things I can't do; that’s how I get to do them." –
           Picasso
@@ -355,14 +341,14 @@ export default function Home() {
         >
           <motion.a
             href="#work"
-            className="bg-[#dc0073] px-4 py-2 z-90 rounded-full font-semibold text-white hover:bg-pink-700 hover:scale-105  duration-300 transition-all"
+            className="bg-[#dc0073] px-8 py-3 z-90 rounded-full font-semibold text-white hover:bg-pink-700 hover:scale-105  duration-300 transition-all"
           >
             Explore Our Work
           </motion.a>
 
           <motion.a
             href="#featured"
-            className="border border-[#dc0073] bg-white z-90 px-4 py-2 text-center rounded-full font-semibold text-pink-700 hover:bg-[#dc0073] hover:text-white duration-300 transition-all"
+            className="border border-[#dc0073] bg-white inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium z-90 h-fit px-7 py-2.5 text-center rounded-full font-semibold text-pink-700 hover:bg-[#dc0073] hover:text-white duration-300 transition-all"
           >
             View Featured
           </motion.a>
