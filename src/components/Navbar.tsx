@@ -37,9 +37,8 @@ const Navbar: React.FC = () => {
       </button>
 
       {/* Desktop links */}
-      <ul className="hidden md:flex gap-6 text-sm">
       <ul
-        className={`flex flex-col md:flex-row gap-4 md:gap-8 text-xs w-full items-center mt-4 md:mt-0 md:w-auto transition-transform duration-300 ${
+        className={`flex flex-col  md:flex  md:flex-row gap-4 md:gap-8 text-xs w-full items-center mt-4 md:mt-0 md:w-auto transition-transform duration-300 ${
           isMenuOpen
             ? "block translate-y-0"
             : "hidden -translate-y-4 md:flex md:translate-y-0"
@@ -72,7 +71,6 @@ const Navbar: React.FC = () => {
           <Search className="text-gray-400" size={14} />
         </div>
       </div>
-      </ul>
 
       {/* Mobile full-screen menu */}
       {isMenuOpen && (
