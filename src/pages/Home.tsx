@@ -38,12 +38,11 @@ export default function Home() {
     const timer = setTimeout(() => {
       if (nextSectionRef.current) {
         nextSectionRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+          behavior: "smooth",
+          block: "start",
         });
       }
     }, 4000);
-
 
     return () => clearTimeout(timer);
   }, []);
@@ -65,41 +64,37 @@ export default function Home() {
     <>
       <Navbar />
       <section className="relative w-full min-h-screen flex flex-col justify-center items-center text-center bg-black text-white overflow-hidden ">
-          {images.map((img, index) =>
-            (
-              <motion.div
-                key={index}
-                onClick={() => handleImageClick(img)}
-                className={`group border border-zinc-600 rounded-lg shadow-lg
+        {images.map((img, index) => (
+          <motion.div
+            key={index}
+            onClick={() => handleImageClick(img)}
+            className={`group border border-zinc-600 rounded-lg shadow-lg
                             ${img.tailwindClass} z-10 cursor-pointer overflow-hidden absolute
                             ${img.responsiveClasses}`}
-                style={{
-                  top: img.top,
-                  left: img.left,
-                  right: img.right,
-                  bottom: img.bottom,
-                }}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + index * 0.3, duration: 0.8 }}
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className={`rounded-lg shadow-lg transform transition-transform duration-500 object-cover group-hover:scale-110`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col justify-end text-left p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <p className="text-white font-semibold text-sm leading-tight mb-1">
-                    {img.title}
-                  </p>
-                  <p className="text-[#dc0073] text-sm font-light">
-                    {img.topic}
-                  </p>
-                </div>
-              </motion.div>
-            )
-          )}
+            style={{
+              top: img.top,
+              left: img.left,
+              right: img.right,
+              bottom: img.bottom,
+            }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 + index * 0.3, duration: 0.8 }}
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              className={`rounded-lg shadow-lg transform transition-transform duration-500 object-cover group-hover:scale-110`}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col justify-end text-left p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <p className="text-white font-semibold text-sm leading-tight mb-1">
+                {img.title}
+              </p>
+              <p className="text-[#dc0073] text-sm font-light">{img.topic}</p>
+            </div>
+          </motion.div>
+        ))}
 
         <motion.div
           className="bg-opacity-70 scale-animation absolute bottom-10
@@ -237,7 +232,7 @@ export default function Home() {
                   initial={{ opacity: 0, scaleY: 0 }}
                   whileInView={{ opacity: 1, scaleY: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 1 + idx*0.3, duration: 1 }}
+                  transition={{ delay: 0.5 + idx * 0.3, duration: 1 }}
                   key={idx}
                   onClick={() => handleImageClick(img)}
                   className="group cursor-pointer bg-[#0a0a0a] border-1  rounded-xl h-auto overflow-hidden border-[#2a2a2a] hover:border-[#dc0073]/30 shadow hover:shadow-pink-500/20  hover:text-pink-600 hover:scale-105 transition-all  ease-in-out"
@@ -293,12 +288,20 @@ export default function Home() {
               ))}
           </div>
 
-          <Link 
-            to="/blogs"
-            className="mt-10 px-4 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:bg-gradient-to-r hover:from-purple-800 hover:to-pink-800 hover:scale-105 transition-all duration-300 inline-block"
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0, duration: 0.5 }}
+            className="mt-10"
           >
-            View All Articles
-          </Link>
+            <Link
+              to="/blogs"
+              className="px-4 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:bg-gradient-to-r hover:from-purple-800 hover:to-pink-800 hover:scale-105 transition-all duration-300 inline-block"
+            >
+              View All Articles
+            </Link>
+          </motion.div>
         </motion.div>
       </section>
 
