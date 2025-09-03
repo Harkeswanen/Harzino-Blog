@@ -16,14 +16,14 @@ function App() {
   return (
     <>
       <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blogs" element={<BlogPage />} />
-          <Route 
-              path='/contactus'
-              element={<ContactUs />}
-            />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blogs" element={<BlogPage />} />
+        <Route 
+            path='/contactus'
+            element={<ContactUs />}
+          />
+      </Routes>
       </div>
         
     </>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Instagram, Linkedin } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -100,12 +101,12 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a
-                href="#"
+              <NavLink
+                to="/contactus"
                 className="hover:text-[#dc0073] transition-all duration-300"
               >
                 Contact
-              </a>
+              </NavLink>
             </li>
           </ul>
         </motion.div>
@@ -120,20 +121,20 @@ export default function Footer() {
           <h3 className="text-white font-semibold mb-4">Resources</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <a
-                href="#"
+              <NavLink
+                to="/blogs"
                 className="hover:text-[#dc0073] transition-all duration-300"
               >
                 Blog
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="#"
+              <NavLink
+                to="/community"
                 className="hover:text-[#dc0073] transition-all duration-300"
               >
                 Community
-              </a>
+              </NavLink>
             </li>
           </ul>
         </motion.div>
@@ -148,28 +149,28 @@ export default function Footer() {
           <h3 className="text-white font-semibold mb-4">Legal</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <a
-                href="#"
+              <NavLink
+                to="#"
                 className="hover:text-[#dc0073] transition-all duration-300"
               >
                 Privacy Policy
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="#"
+              <NavLink
+                to="#"
                 className="hover:text-[#dc0073] transition-all duration-300"
               >
                 Terms of Service
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="#"
+              <NavLink
+                to="#"
                 className="hover:text-[#dc0073] transition-colours duration-300"
               >
                 Cookie Policy
-              </a>
+              </NavLink>
             </li>
           </ul>
         </motion.div>
