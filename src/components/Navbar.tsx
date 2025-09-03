@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Search, Menu, X } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useSearchParams  } from "react-router-dom";
 
 type NavItem = {
   name: string;
@@ -16,9 +16,29 @@ const navItems: NavItem[] = [
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+   const [searchQuery, setSearchQuery] = useState("");
+   const navigate = useNavigate();
+   const [searchParams] = useSearchParams();
+
+   useEffect(() => {
+    const queryFromUrl = searchParams.get("search");
+    if (queryFromUrl) {
+      setSearchQuery(decodeURIComponent(queryFromUrl));
+    } else {
+      setSearchQuery("");
+    }
+  }, [searchParams]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleSearchSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/blogs?search=${encodeURIComponent(searchQuery)}`);
+      setIsMenuOpen(false); // Close mobile menu after search
+    }
   };
 
   return (
@@ -61,16 +81,20 @@ const Navbar: React.FC = () => {
       </ul>
 
       {/* Search (desktop only) */}
-      <div className="hidden md:flex relative bg-zinc-900 rounded-md border border-zinc-800 items-center text-xs focus-within:ring-2 focus-within:ring-pink-700 w-64">
-        <input
-          type="text"
-          placeholder="Search blogs..."
-          className="pr-10 px-4 py-1 text-[#bebebc] bg-transparent outline-none w-full"
-        />
-        <div className="p-2 absolute right-0 top-0 h-full flex items-center">
-          <Search className="text-gray-400" size={14} />
-        </div>
-      </div>
+      <form onSubmit={handleSearchSubmit}>
+            <div className="relative bg-zinc-900 rounded-md border border-zinc-800 flex items-center text-sm">
+              <input
+                type="text"
+                placeholder="Search blogs..."
+                className="pr-10 px-4 py-1 text-[#bebebc] rounded-md bg-transparent outline-none focus:ring-2 focus:ring-pink-700 focus:border-pink-700 transition-all w-full"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button type="submit" className="p-2 absolute right-0 top-0 h-full flex items-center text-gray-400">
+                <Search size={16} />
+              </button>
+            </div>
+          </form>
 
       {/* Mobile full-screen menu */}
       {isMenuOpen && (
@@ -103,16 +127,20 @@ const Navbar: React.FC = () => {
           </ul>
 
           {/* Search input */}
-          <div className="mt-2 relative bg-zinc-900 rounded-md border border-zinc-800 items-center text-sm flex">
-            <input
-              type="text"
-              placeholder="Search blogs..."
-              className="file:text-foreground placeholder:text-muted-foreground flex h-9 min-w-0 rounded-md border px-3 py-1 text-base transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive w-full bg-[#181818] border-[#353535] text-[#bebebc] placeholder-[#6b7280] pr-10"
-            />
-            <div className="p-2 absolute right-0 top-0 h-full flex items-center">
-              <Search className="text-gray-400" size={16} />
+          <form onSubmit={handleSearchSubmit}>
+            <div className="mt-4 relative bg-zinc-900 rounded-md border border-zinc-800 flex items-center text-sm">
+              <input
+                type="text"
+                placeholder="Search blogs..."
+                className="pr-10 px-4 py-2 text-[#bebebc] bg-transparent outline-none w-full"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button type="submit" className="p-2 absolute right-0 top-0 h-full flex items-center text-gray-400">
+                <Search size={16} />
+              </button>
             </div>
-          </div>
+          </form>
         </div>
       )}
     </nav>
