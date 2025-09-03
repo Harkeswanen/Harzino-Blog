@@ -236,7 +236,7 @@ export default function Home() {
                   initial={{ opacity: 0, scaleY: 0 }}
                   whileInView={{ opacity: 1, scaleY: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 1 + idx*0.3, duration: 1 }}
+                  transition={{ delay: 0.5 + idx*0.3, duration: 1 }}
                   key={idx}
                   onClick={() => handleImageClick(img)}
                   className="group cursor-pointer bg-[#0a0a0a] border-1  rounded-xl h-auto overflow-hidden border-[#2a2a2a] hover:border-[#dc0073]/30 shadow hover:shadow-pink-500/20  hover:text-pink-600 hover:scale-105 transition-all  ease-in-out"

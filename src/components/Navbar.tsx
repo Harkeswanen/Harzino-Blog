@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
       </ul>
 
       {/* Search (desktop only) */}
-      <form onSubmit={handleSearchSubmit}>
+      <form onSubmit={handleSearchSubmit} className="hidden md:block md:ml-4">
             <div className="relative bg-zinc-900 rounded-md border border-zinc-800 flex items-center text-sm">
               <input
                 type="text"
