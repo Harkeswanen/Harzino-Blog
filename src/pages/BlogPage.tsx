@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Modal from "../components/ModalProps";
+import { useSearchParams } from "react-router-dom";
 import { blogs as allBlogs } from "../data/blogData";
 import type { Blog } from "../data/blogData";
 import { Search, Grid, List, ChevronDown, Clock } from "lucide-react";
@@ -80,6 +81,7 @@ const BlogCard = ({ b, onClick }: { b: Blog; onClick: () => void }) => {
     </motion.article>
   );
 };export default function BlogPage() {
+	const [searchParams] = useSearchParams();
 	const [query, setQuery] = useState("");
 	const [cat, setCat] = useState<string>("All");
 	const [sort, setSort] = useState<SortKey>("latest");
@@ -102,6 +104,14 @@ const BlogCard = ({ b, onClick }: { b: Blog; onClick: () => void }) => {
 			window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 		});
 	}, []);
+
+	useEffect(() => {
+    const searchQueryFromUrl = searchParams.get("search");
+    if (searchQueryFromUrl) {
+      setQuery(decodeURIComponent(searchQueryFromUrl));
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [searchParams]);
 
 	const categories = ["All", ...new Set(allBlogs.map((b) => b.category))];
 
