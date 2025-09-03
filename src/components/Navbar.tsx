@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Search, Menu, X } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 type NavItem = {
   name: string;
@@ -13,7 +14,7 @@ const navItems: NavItem[] = [
   { name: "Contact Us", href: "/contact" },
 ];
 
-const currentPath = "/";
+// Current path highlighting is handled by NavLink
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,16 +41,17 @@ const Navbar: React.FC = () => {
       {/* Desktop links */}
       <ul className="hidden md:flex gap-6 text-sm">
         {navItems.map((item) => (
-          <li
-            key={item.name}
-            className={`px-3 py-2 rounded-md font-semibold cursor-pointer transition
-              ${
-                currentPath === item.href
-                  ? "bg-zinc-900 text-pink-600"
-                  : "text-zinc-400 hover:text-pink-600"
-              }`}
-          >
-            {item.name}
+          <li key={item.name}>
+            <NavLink
+              to={item.href}
+              className={({ isActive }) =>
+                `px-3 py-2 rounded-md font-semibold transition ${
+                  isActive ? "bg-zinc-900 text-pink-600" : "text-zinc-400 hover:text-pink-600"
+                }`
+              }
+            >
+              {item.name}
+            </NavLink>
           </li>
         ))}
       </ul>
@@ -80,16 +82,18 @@ const Navbar: React.FC = () => {
           {/* Nav links */}
           <ul className="flex flex-col gap-2 text-sm pt-1 border-t-1 border-zinc-800">
             {navItems.map((item) => (
-              <li
-                key={item.name}
-                className={`px-3 py-2 rounded-md font-semibold cursor-pointer transition
-                  ${
-                    currentPath === item.href
-                      ? "bg-pink-900/30 text-pink-500"
-                      : "text-zinc-300 hover:text-pink-500"
-                  }`}
-              >
-                {item.name}
+              <li key={item.name}>
+                <NavLink
+                  to={item.href}
+                  onClick={toggleMenu}
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-md font-semibold transition ${
+                      isActive ? "bg-pink-900/30 text-pink-500" : "text-zinc-300 hover:text-pink-500"
+                    }`
+                  }
+                >
+                  {item.name}
+                </NavLink>
               </li>
             ))}
           </ul>

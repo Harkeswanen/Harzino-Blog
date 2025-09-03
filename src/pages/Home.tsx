@@ -192,18 +192,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 768);
-    };
-
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
+  // Removed unused isSmallScreen state and listener
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
@@ -437,7 +426,7 @@ export default function Home() {
                     <span>{img.date}</span>
                   </div>
                   <div className="flex flex-wrap gap-2 px-4 py-2 mt-2">
-                    {img.tags.map((tag) => (
+                    {img.tags?.map((tag) => (
                       <div
                         key={tag}
                         className="w-fit bg-[#1a1a1a] px-2 text-xs text-center rounded-full  text-zinc-400"

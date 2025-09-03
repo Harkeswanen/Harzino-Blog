@@ -96,7 +96,7 @@ const Modal: React.FC<ModalProps> = ({ imageData, onClose }) => {
           </div>
           {/* Topic */}
           {imageData.topic && (
-            <span className="bg-zinc-800 text-[#dc0073] text-sm px-2 py-1 rounded-full font-medium">
+            <span className="text-[#dc0073] ring-1 ring-[#dc0073]/30 text-xs px-2 py-1 rounded-md font-medium">
               {imageData.topic}
             </span>
           )}
@@ -113,13 +113,13 @@ const Modal: React.FC<ModalProps> = ({ imageData, onClose }) => {
           )}
           {/* Tags Section */}
           {imageData.tags && (
-            <div className="mt-6">
+            <div className="mt-6 pt-6 border-t border-zinc-700">
               <span className="text-zinc-400 font-semibold mr-2">Tags:</span>
-              <div className="flex flex-wrap gap-2 mt-2">
+              <div className="flex flex-wrap gap-2 mt-3 pb-6 border-b border-zinc-700">
                 {imageData.tags.map((tag, i) => (
                   <span
                     key={i}
-                    className="bg-zinc-800 text-zinc-400 text-sm px-3 py-1 rounded-full"
+                    className="bg-[#151515] text-zinc-400 px-2 py-1 text-xs rounded-full border border-zinc-700/50 hover:border-[#dc0073]/50 hover:shadow-[#dc0073]/20 hover:shadow-md transition-all duration-300 cursor-pointer"
                   >
                     #{tag}
                   </span>
