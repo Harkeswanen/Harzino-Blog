@@ -6,6 +6,7 @@ import Modal from "../components/ModalProps";
 import { useEffect, useState, useRef } from "react";
 import { Clock } from "lucide-react";
 import { BsStarFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 interface ImageData {
   src: string;
@@ -57,6 +58,16 @@ export default function Home() {
   const handleCloseModal = () => {
     setModalOpen(false);
     setSelectedImage(null);
+  };
+
+  const scrollToFeatured = () => {
+    const featuredSection = document.getElementById('featured');
+    if (featuredSection) {
+      featuredSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   };
 
   return (
@@ -183,12 +194,12 @@ export default function Home() {
             Explore Our Work
           </motion.a>
 
-          <motion.a
-            href="#featured"
-            className="border border-[#dc0073] bg-white inline-flex items-center justify-center gap-2 whitespace-nowrap z-90 h-fit px-7 py-2.5 text-center rounded-full font-semibold text-pink-700 hover:bg-[#dc0073] hover:text-white duration-300 transition-all"
+          <motion.button
+            onClick={scrollToFeatured}
+            className="border border-[#dc0073] bg-white inline-flex items-center justify-center gap-2 whitespace-nowrap z-90 h-fit px-7 py-2.5 text-center rounded-full font-semibold text-pink-700 hover:bg-[#dc0073] hover:text-white duration-300 transition-all cursor-pointer"
           >
             View Featured
-          </motion.a>
+          </motion.button>
         </motion.div>
 
         {/* Scroll Indicator */}
@@ -206,7 +217,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section ref={nextSectionRef} className="py-16 bg-black text-white">
+      <section id="featured" ref={nextSectionRef} className="py-16 bg-black text-white">
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.8 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -287,15 +298,20 @@ export default function Home() {
               ))}
           </div>
 
-          <motion.button
-            initial={{ opacity: 0,y: 30}}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0, duration: 0.5 }}
-            className="mt-10 px-4 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:bg-gradient-to-r hover:from-purple-800 hover:to-pink-800 hover:scale-105 transition-all duration-300 "
+            className="mt-10"
           >
-            View All Articles
-          </motion.button>
+            <Link
+              to="/blogs"
+              className="px-4 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:bg-gradient-to-r hover:from-purple-800 hover:to-pink-800 hover:scale-105 transition-all duration-300 inline-block"
+            >
+              View All Articles
+            </Link>
+          </motion.div>
         </motion.div>
       </section>
 
