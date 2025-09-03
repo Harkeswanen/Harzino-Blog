@@ -60,6 +60,16 @@ export default function Home() {
     setSelectedImage(null);
   };
 
+  const scrollToFeatured = () => {
+    const featuredSection = document.getElementById('featured');
+    if (featuredSection) {
+      featuredSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -184,12 +194,12 @@ export default function Home() {
             Explore Our Work
           </motion.a>
 
-          <motion.a
-            href="#featured"
-            className="border border-[#dc0073] bg-white inline-flex items-center justify-center gap-2 whitespace-nowrap z-90 h-fit px-7 py-2.5 text-center rounded-full font-semibold text-pink-700 hover:bg-[#dc0073] hover:text-white duration-300 transition-all"
+          <motion.button
+            onClick={scrollToFeatured}
+            className="border border-[#dc0073] bg-white inline-flex items-center justify-center gap-2 whitespace-nowrap z-90 h-fit px-7 py-2.5 text-center rounded-full font-semibold text-pink-700 hover:bg-[#dc0073] hover:text-white duration-300 transition-all cursor-pointer"
           >
             View Featured
-          </motion.a>
+          </motion.button>
         </motion.div>
 
         {/* Scroll Indicator */}
@@ -207,7 +217,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section ref={nextSectionRef} className="py-16 bg-black text-white">
+      <section id="featured" ref={nextSectionRef} className="py-16 bg-black text-white">
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.8 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
