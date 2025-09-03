@@ -1,9 +1,8 @@
 import './App.css'
 import Home from './pages/Home';
 import ContactUs from './pages/ContactUs';
-import { Route , Routes } from 'react-router-dom';
 import BlogPage from './pages/BlogPage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function App() {
@@ -17,16 +16,14 @@ function App() {
   return (
     <>
       <div>
-        <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/blogs" element={<BlogPage />} />
-        <Route 
-            path='/contactus'
-            element={<ContactUs />}
-          />
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blogs" element={<BlogPage />} />
+          <Route 
+              path='/contactus'
+              element={<ContactUs />}
+            />
+        </Routes>
       </div>
         
     </>

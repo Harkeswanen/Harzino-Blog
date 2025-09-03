@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
 import { Search, Menu, X } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
@@ -15,11 +14,8 @@ const navItems: NavItem[] = [
   { name: "Contact Us", href: "/contactus" },
 ];
 
-// Current path highlighting is handled by NavLink
-
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation(); 
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -40,28 +36,6 @@ const Navbar: React.FC = () => {
         {isMenuOpen ? <X size={12} /> : <Menu size={12} />}
       </button>
 
-      {/* Links */}
-      <ul
-        className={`flex flex-col md:flex-row gap-4 md:gap-8 text-xs w-full items-center mt-4 md:mt-0 md:w-auto transition-transform duration-300 ${
-          isMenuOpen
-            ? "block translate-y-0"
-            : "hidden -translate-y-4 md:flex md:translate-y-0"
-        }`}
-      >
-        {navItems.map((item) => (
-          <li key={item.name}>
-            <Link
-              to={item.href}
-              className={`px-3 py-2 rounded-md font-semibold cursor-pointer transition-transform duration-150 hover:scale-x-105 hover:scale-y-105
-                ${
-                  location.pathname === item.href
-                    ? "bg-zinc-900 text-pink-600 hover:scale-105"
-                    : "text-zinc-400 hover:text-pink-600"
-                }
-              `}
-            >
-              {item.name}
-            </Link>
       {/* Desktop links */}
       <ul className="hidden md:flex gap-6 text-sm">
         {navItems.map((item) => (
@@ -80,12 +54,6 @@ const Navbar: React.FC = () => {
         ))}
       </ul>
 
-      {/* Search */}
-      <div
-        className={`mt-4 md:mt-0 md:flex relative bg-zinc-900 rounded-md border border-zinc-800 items-center text-xs focus-within:ring-2 focus-within:ring-pink-700 w-full md:w-auto transition-opacity duration-300 ${
-          isMenuOpen ? "opacity-100" : "hidden opacity-0 md:opacity-100"
-        }`}
-      >
       {/* Search (desktop only) */}
       <div className="hidden md:flex relative bg-zinc-900 rounded-md border border-zinc-800 items-center text-xs focus-within:ring-2 focus-within:ring-pink-700 w-64">
         <input
