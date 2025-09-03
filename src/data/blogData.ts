@@ -12,11 +12,11 @@ export type Blog = {
 	excerpt: string;
 	content?: string;
 	author: string;
-	date: string;
+	date: string; // ISO string
 	readTimeMin: number;
 	category: BlogCategory;
 	tags: string[];
-	cover: string;
+	cover: string; // path to image
 	featured?: boolean;
 };
 

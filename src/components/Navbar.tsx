@@ -72,7 +72,7 @@ const Navbar: React.FC = () => {
           <Search className="text-gray-400" size={14} />
         </div>
       </div>
-      </div>
+      </ul>
 
       {/* Mobile full-screen menu */}
       {isMenuOpen && (

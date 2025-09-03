@@ -74,7 +74,7 @@ export default function Footer() {
                 hidden: { y: 10, opacity: 0 },
                 visible: { y: 0, opacity: 1 },
               }}
-              href="mailto:info@harzino.com"
+              href="mailto:support@harzino.com"
               className="hover:text-[#dc0073] transition-all duration-300"
               aria-label="Email"
             >
