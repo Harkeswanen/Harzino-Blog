@@ -37,6 +37,7 @@ const Navbar: React.FC = () => {
       </button>
 
       {/* Desktop links */}
+      <ul className="hidden md:flex gap-6 text-sm">
       <ul
         className={`flex flex-col md:flex-row gap-4 md:gap-8 text-xs w-full items-center mt-4 md:mt-0 md:w-auto transition-transform duration-300 ${
           isMenuOpen
@@ -60,12 +61,6 @@ const Navbar: React.FC = () => {
         ))}
       </ul>
 
-      {/* Search */}
-      <div
-        className={`mt-4 md:mt-0 md:flex relative bg-zinc-900 rounded-md border border-zinc-800 items-center text-xs focus-within:ring-2 focus-within:ring-pink-700 w-full md:w-auto transition-opacity duration-300 ${
-          isMenuOpen ? "opacity-100" : "hidden opacity-0 md:opacity-100"
-        }`}
-      >
       {/* Search (desktop only) */}
       <div className="hidden md:flex relative bg-zinc-900 rounded-md border border-zinc-800 items-center text-xs focus-within:ring-2 focus-within:ring-pink-700 w-64">
         <input

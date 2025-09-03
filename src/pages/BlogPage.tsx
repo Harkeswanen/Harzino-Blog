@@ -10,12 +10,22 @@ import { motion } from "framer-motion";
 
 type SortKey = "latest" | "oldest" | "readtime";
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1.3, delay: i * 0.20 },
+    ease: [0.25, 0.1, 0.25, 1]
+  }),
+};
+
 const BlogCard = ({ b, onClick }: { b: Blog; onClick: () => void }) => {
   return (
     <motion.article 
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
       onClick={onClick}
       className="group cursor-pointer bg-[#0a0a0a] border rounded-xl overflow-hidden border-[#2a2a2a] hover:border-[#dc0073]/50 shadow hover:shadow-[#dc0073]/20 hover:scale-105 transition-all ease-in-out flex flex-col h-full"
     >
@@ -144,9 +154,10 @@ const BlogCard = ({ b, onClick }: { b: Blog; onClick: () => void }) => {
 				<section className="max-w-6xl mx-auto px-4">
 					<motion.header 
 						className="text-center mb-8"
-						initial={{ opacity: 0, y: 40 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.8 }}
+						initial="hidden"
+						animate="visible"
+						variants={fadeUp}
+						custom={0}
 					>
 						<h1 className="text-4xl md:text-4.5xl font-bold mb-2">
 							<span className="bg-gradient-to-r from-purple-500 to-pink-600 bg-[length:200%_200%] text-transparent bg-clip-text gradient-animation">
@@ -160,9 +171,10 @@ const BlogCard = ({ b, onClick }: { b: Blog; onClick: () => void }) => {
 
 					<motion.div 
 						className="flex flex-col gap-3 md:flex-row md:items-center md:gap-4 bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-4"
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2, duration: 0.6 }}
+						initial="hidden"
+						animate="visible"
+						variants={fadeUp}
+						custom={1}
 					>
 						<div className="relative flex-1">
 							<Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={16} />
@@ -232,9 +244,10 @@ const BlogCard = ({ b, onClick }: { b: Blog; onClick: () => void }) => {
 
 					<motion.p 
 						className="text-sm text-zinc-500 mt-4"
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ delay: 0.4, duration: 0.6 }}
+						initial="hidden"
+						animate="visible"
+						variants={fadeUp}
+						custom={2}
 					>
 						{blogs.length} articles found
 					</motion.p>
@@ -242,9 +255,10 @@ const BlogCard = ({ b, onClick }: { b: Blog; onClick: () => void }) => {
 					{view === "grid" ? (
 						<motion.div 
 							className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6"
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							transition={{ delay: 0.6, duration: 0.8 }}
+							initial="hidden"
+							animate="visible"
+							variants={fadeUp}
+							custom={3}
 						>
 							{blogs.map((b) => (
 								<BlogCard key={b.id} b={b} onClick={() => handleBlogClick(b)} />
@@ -253,16 +267,17 @@ const BlogCard = ({ b, onClick }: { b: Blog; onClick: () => void }) => {
 					) : (
 						<motion.div 
 							className="flex flex-col gap-6 mt-6"
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							transition={{ delay: 0.6, duration: 0.8 }}
+							initial="hidden"
+							animate="visible"
+							variants={fadeUp}
+							custom={3}
 						>
-							{blogs.map((b) => (
+							{blogs.map((b, index) => (
 								<motion.div 
 									key={b.id} 
-									initial={{ opacity: 0, y: 20 }}
+									initial={{ opacity: 0, y: 30 }}
 									animate={{ opacity: 1, y: 0 }}
-									transition={{ duration: 0.6 }}
+									transition={{ duration: 0.8, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
 									onClick={() => handleBlogClick(b)}
 									className="flex flex-col sm:flex-row bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl overflow-hidden cursor-pointer hover:border-[#dc0073]/50 hover:scale-[1.02] transition-all group"
 								>

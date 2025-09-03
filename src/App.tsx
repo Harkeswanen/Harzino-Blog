@@ -1,8 +1,8 @@
 import './App.css'
 import Home from './pages/Home';
 import ContactUs from './pages/ContactUs';
-import { Route , Routes } from 'react-router-dom';
 import BlogPage from './pages/BlogPage';
+import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function App() {
