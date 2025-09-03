@@ -4,6 +4,7 @@ import ContactUs from './pages/ContactUs';
 import BlogPage from './pages/BlogPage';
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
+import CookiePolicy from './pages/CookiesPage';
 
 function App() {
   // Global scroll restoration prevention
@@ -22,6 +23,10 @@ function App() {
         <Route 
             path='/contactus'
             element={<ContactUs />}
+          />
+          <Route 
+            path='/cookies'
+            element={<CookiePolicy />}
           />
       </Routes>
       </div>

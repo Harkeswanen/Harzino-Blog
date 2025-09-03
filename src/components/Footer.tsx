@@ -47,7 +47,7 @@ export default function Footer() {
                 visible: { y: 0, opacity: 1 },
               }}
               href="#"
-              target="_blank"
+              target="https://www.instagram.com/harzino"
               rel="noopener noreferrer"
               className="hover:text-[#dc0073] transition-all duration-300"
               aria-label="Instagram"
@@ -61,7 +61,7 @@ export default function Footer() {
                 visible: { y: 0, opacity: 1 },
               }}
               href="#"
-              target="_blank"
+              target="https://linkedin.com/company/harzino"
               rel="noopener noreferrer"
               className="hover:text-[#dc0073] transition-all duration-300"
               aria-label="LinkedIn"
@@ -166,7 +166,7 @@ export default function Footer() {
             </li>
             <li>
               <NavLink
-                to="#"
+                to="/cookies"
                 className="hover:text-[#dc0073] transition-colours duration-300"
               >
                 Cookie Policy
