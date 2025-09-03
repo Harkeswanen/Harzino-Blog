@@ -6,6 +6,7 @@ import Modal from "../components/ModalProps";
 import { useEffect, useState, useRef } from "react";
 import { Clock } from "lucide-react";
 import { BsStarFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 interface ImageData {
   src: string;
@@ -292,9 +293,12 @@ export default function Home() {
               ))}
           </div>
 
-          <button className="mt-10 px-4 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:bg-gradient-to-r hover:from-purple-800 hover:to-pink-800 hover:scale-105 transition-all duration-300 ">
+          <Link 
+            to="/blogs"
+            className="mt-10 px-4 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:bg-gradient-to-r hover:from-purple-800 hover:to-pink-800 hover:scale-105 transition-all duration-300 inline-block"
+          >
             View All Articles
-          </button>
+          </Link>
         </motion.div>
       </section>
 
