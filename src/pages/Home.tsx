@@ -451,14 +451,15 @@ export default function Home() {
                     <span>{img.date}</span>
                   </div>
                   <div className="flex flex-wrap gap-2 px-4 py-2 mt-2">
-                    {img.tags.map((tag) => (
-                      <div
-                        key={tag}
-                        className="w-fit bg-[#1a1a1a] px-2 text-xs text-center rounded-full  text-zinc-400"
-                      >
-                        #{tag}
-                      </div>
-                    ))}
+                    {img.tags &&
+                      img.tags.map((tag) => (
+                        <div
+                          key={tag}
+                          className="w-fit bg-[#1a1a1a] px-2 text-xs text-center rounded-full  text-zinc-400"
+                        >
+                          #{tag}
+                        </div>
+                      ))}
                   </div>
                 </motion.div>
               ))}
