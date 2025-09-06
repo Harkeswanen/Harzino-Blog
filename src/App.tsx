@@ -1,23 +1,45 @@
 import './App.css'
-import Modal from './components/ModalProps';
+
 import Community from './pages/Community';
 import Home from './pages/Home';
+import ContactUs from './pages/ContactUs';
+import BlogPage from './pages/BlogPage';
+import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import CookiePolicy from './pages/CookiesPage';
 
 
 
 
 function App() {
+  // Global scroll restoration prevention
+  useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+  }, []);
 
   return (
     <>
       <div>
-        
-        <Home />
-        <Community />
-        
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blogs" element={<BlogPage />} />
+        <Route 
+            path='/contactus'
+            element={<ContactUs />}
+          />
+          <Route 
+            path='/cookies'
+            element={<CookiePolicy />}
+          />
+          <Route path= "/community" element={<Community />} />
+      </Routes>
       </div>
       
     </>
+    
   )
 }
 

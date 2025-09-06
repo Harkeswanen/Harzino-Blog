@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Instagram, Linkedin } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -46,7 +47,7 @@ export default function Footer() {
                 visible: { y: 0, opacity: 1 },
               }}
               href="#"
-              target="_blank"
+              target="https://www.instagram.com/harzino"
               rel="noopener noreferrer"
               className="hover:text-[#dc0073] transition-all duration-300"
               aria-label="Instagram"
@@ -60,7 +61,7 @@ export default function Footer() {
                 visible: { y: 0, opacity: 1 },
               }}
               href="#"
-              target="_blank"
+              target="https://linkedin.com/company/harzino"
               rel="noopener noreferrer"
               className="hover:text-[#dc0073] transition-all duration-300"
               aria-label="LinkedIn"
@@ -73,7 +74,7 @@ export default function Footer() {
                 hidden: { y: 10, opacity: 0 },
                 visible: { y: 0, opacity: 1 },
               }}
-              href="mailto:info@harzino.com"
+              href="mailto:support@harzino.com"
               className="hover:text-[#dc0073] transition-all duration-300"
               aria-label="Email"
             >
@@ -100,12 +101,12 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a
-                href="#"
+              <NavLink
+                to="/contactus"
                 className="hover:text-[#dc0073] transition-all duration-300"
               >
                 Contact
-              </a>
+              </NavLink>
             </li>
           </ul>
         </motion.div>
@@ -120,20 +121,20 @@ export default function Footer() {
           <h3 className="text-white font-semibold mb-4">Resources</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <a
-                href="#"
+              <NavLink
+                to="/blogs"
                 className="hover:text-[#dc0073] transition-all duration-300"
               >
                 Blog
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="#"
+              <NavLink
+                to="/community"
                 className="hover:text-[#dc0073] transition-all duration-300"
               >
                 Community
-              </a>
+              </NavLink>
             </li>
           </ul>
         </motion.div>
@@ -148,28 +149,28 @@ export default function Footer() {
           <h3 className="text-white font-semibold mb-4">Legal</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <a
-                href="#"
+              <NavLink
+                to="#"
                 className="hover:text-[#dc0073] transition-all duration-300"
               >
                 Privacy Policy
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="#"
+              <NavLink
+                to="#"
                 className="hover:text-[#dc0073] transition-all duration-300"
               >
                 Terms of Service
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="#"
+              <NavLink
+                to="/cookies"
                 className="hover:text-[#dc0073] transition-colours duration-300"
               >
                 Cookie Policy
-              </a>
+              </NavLink>
             </li>
           </ul>
         </motion.div>
