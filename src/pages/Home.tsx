@@ -286,21 +286,12 @@ export default function Home() {
                   </div>
                   <div className="flex flex-wrap gap-2 px-4 py-2 mt-2">
 
-                    {img.tags &&
-                      img.tags.map((tag) => (
-                        <div
-                          key={tag}
-                          className="w-fit bg-[#1a1a1a] px-2 text-xs text-center rounded-full  text-zinc-400"
-                        >
-                                              </div>
-                      ))}
-
                     {img.tags?.map((tag) => (
                       <div
-                        key={tag}
+                        key={tag + Math.random()}
                         className="w-fit bg-[#1a1a1a] px-2 text-xs text-center rounded-full  text-zinc-400"
                       >
-                   
+                        {tag}
                       </div>
                     ))}
 

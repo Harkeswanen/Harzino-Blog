@@ -2,6 +2,8 @@ import { useState  } from "react";
 import type { FC } from "react";
 
 import { MessageSquareIcon, User2Icon } from "lucide-react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 // Fix: Use FC for IconComponent type alias
 type IconComponent = FC<{}>;
@@ -96,13 +98,17 @@ const Community: FC = () => {
   );
 
   return (
-    <div
-      className={"bg-[#010002] text-white font-sans min-h-screen py-16 px-4 sm:px-6 lg:px-8 "}
-       
-    >
+    <>
+    
+    <div className={showModal ? "filter blur-sm" : ""}>
+      <Navbar />
+
+      <div
+        className={"bg-[#010002] text-white font-sans min-h-screen py-16 px-4 sm:px-6 lg:px-8 "}
+      >
       <div className="max-w-7xl mx-auto text-center">
         {/* Header Section */}
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 mt-10">
           Join Our <span className="bg-gradient-to-r from-[#FF0077] to-[#B918EE] bg-clip-text text-transparent">Community</span>
         </h1>
         <p className="max-w-2xl mx-auto text-md md:text-lg text-gray-400 mb-8">
@@ -150,61 +156,12 @@ const Community: FC = () => {
         </div>
       </div>
 
+    </div>
+
+    <Footer />
+    </div>
       {showModal && (
-        // <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-        //   <div className="bg-[#1B002B] rounded-2xl shadow-2xl p-8 relative w-full max-w-lg">
-        //     <button
-        //       onClick={() => setShowModal(false)}
-        //       className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-200"
-        //     >
-        //       <svg
-        //         xmlns="http://www.w3.org/2000/svg"
-        //         width="24"
-        //         height="24"
-        //         viewBox="0 0 24 24"
-        //         fill="none"
-        //         stroke="currentColor"
-        //         strokeWidth="2"
-        //         strokeLinecap="round"
-        //         strokeLinejoin="round"
-        //       >
-        //         <line x1="18" y1="6" x2="6" y2="18"></line>
-        //         <line x1="6" y1="6" x2="18" y2="18"></line>
-        //       </svg>
-        //     </button>
-        //     <h2 className="text-2xl font-bold mb-6 text-center text-gray-100">
-        //       Join Our Community
-        //     </h2>
-        //     <form className="space-y-4">
-        //       <div>
-        //         <label className="block text-sm font-medium text-gray-300 mb-1">
-        //           Full Name
-        //         </label>
-        //         <input
-        //           type="text"
-        //           className="w-full p-3 rounded-lg bg-[#25083B] text-white border border-[#B918EE] focus:ring focus:ring-[#B918EE] focus:border-transparent"
-        //           placeholder="Enter your full name"
-        //         />
-        //       </div>
-        //       <div>
-        //         <label className="block text-sm font-medium text-gray-300 mb-1">
-        //           Email Address
-        //         </label>
-        //         <input
-        //           type="email"
-        //           className="w-full p-3 rounded-lg bg-[#25083B] text-white border border-[#B918EE] focus:ring focus:ring-[#B918EE] focus:border-transparent"
-        //           placeholder="Enter your email"
-        //         />
-        //       </div>
-        //       <button
-        //         type="submit"
-        //         className="w-full bg-gradient-to-r from-[#B918EE] to-[#FF0077] hover:from-[#FF0077] hover:to-[#B918EE] text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg mt-4"
-        //       >
-        //         Sign Up
-        //       </button>
-        //     </form>
-        //   </div>
-        // </div>
+        
         <>
            {/* Blurred overlay */}
         <div className="fixed inset-0 bg-opacity-60 backdrop-blur-sm z-40"></div>
@@ -212,7 +169,7 @@ const Community: FC = () => {
             <div className="w-full h-full bg-black bg-opacity-60 backdrop-blur-sm"></div>
           </div> */}
         {/* Centered modal */}
-        <div className="fixed inset-0 flex items-center justify-center z-50 p-2 ">
+        <div className="fixed inset-0 flex items-start justify-center z-50 px-10 py-20 p-2 ">
           <div className="bg-[#0a0a0a] rounded-2xl shadow-2xl p-6 relative w-full max-w-md">
             <button
               onClick={() => setShowModal(false)}
@@ -288,7 +245,7 @@ const Community: FC = () => {
         </div>
         </>
       )}
-    </div>
+    </>
   );
 };
 
