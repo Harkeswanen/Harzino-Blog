@@ -312,7 +312,7 @@ export default function Home() {
           >
             <Link
               to="/blogs"
-              className=" py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:bg-gradient-to-r hover:from-purple-800 hover:to-pink-800 hover:scale-105 transition-all duration-300 inline-block"
+              className="px-2 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:bg-gradient-to-r hover:from-purple-800 hover:to-pink-800 hover:scale-105 transition-all duration-300 inline-block"
             >
               View All Articles
             </Link>
