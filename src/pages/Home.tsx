@@ -243,17 +243,16 @@ export default function Home() {
                   initial={{ opacity: 0, scaleY: 0 }}
                   whileInView={{ opacity: 1, scaleY: 1 }}
                   viewport={{ once: true }}
-                  
-                  transition={{ delay: 0 + idx*0.1, duration:0.4,ease: "easeOut" }}
+                  transition={{ delay: 0 + idx*0.1, duration:0.4 ,ease: "easeOut" }}
                   key={idx}
                   onClick={() => handleImageClick(img)}
-                  className="group cursor-pointer bg-[#0a0a0a] border-1  rounded-xl h-auto overflow-hidden border-[#2a2a2a] hover:border-[#dc0073]/30 shadow hover:shadow-pink-500/20  hover:text-pink-600 hover:scale-105 transition-all duration-600 ease-in-out"
+                  className="group cursor-pointer bg-[#0a0a0a] border-1 flex flex-col rounded-xl h-full overflow-hidden border-[#2a2a2a] hover:border-[#dc0073]/30 shadow hover:shadow-pink-500/20  hover:text-pink-600 hover:scale-105 transition-all duration-600 ease-in-out"
                 >
-                  <div className="relative h-fit">
+                  <div className="relative ">
                     <img
                       src={img.src}
                       alt={img.title}
-                      className="w-full h-[30%] object-cover group-hover:scale-110 rounded-t-lg mb-4 transition-transform duration-600 ease-in-out"
+                      className="w-full h-full object-cover group-hover:scale-105 rounded-t-lg mb-4 transition-transform duration-600 ease-in-out"
                     />
                     {img.featured && (
                       <div className="absolute top-4 right-4 bg-[#dc0073] text-white text-xs px-1 py-1 z-[120] rounded-full font-semibold">
@@ -261,42 +260,44 @@ export default function Home() {
                       </div>
                     )}
                   </div>
-                  <div className="flex justify-between items-center mb-2 px-4">
-                    <span className=" text-pink-600 ring-1 text-xs px-1 py-1 rounded-md ">
+                  <div className="[&:last-child]:pb-6 p-6 flex-1 flex flex-col">
+                  <div className="flex justify-between items-center mb-2 ">
+                    <span className=" text-pink-600 border-[#dc0073]/30 border-1 text-xs px-2 py-0.5 font-medium rounded-md ">
                       {img.topic}
                     </span>
-                    <div className="flex justify-around items-center px-2 py-1 gap-1 text-[#4f535d] text-xs rounded-full ">
+                    <div className="flex justify-around items-center py-1 gap-1 text-[#4f535d] text-xs rounded-full ">
                       <Clock className="size-3" />
                       {img.readTime}
                     </div>
                   </div>
 
-                  <h3 className="text-lg text-left px-4 py-2 font-semibold leading-tight">
+                  <h3 className="text-lg text-left py-2 font-semibold leading-tight">
                     {img.title}
                   </h3>
 
                   <p
-                    className="text-sm text-left px-4 py-2 text-zinc-400 line-clamp-5"
+                    className="text-sm text-left py-2 text-zinc-400 line-clamp-5"
                     dangerouslySetInnerHTML={{
                       __html: img.content?.slice(0, 160) + "...",
                     }}
                   />
 
-                  <div className="flex text-left px-4 py-2 justify-between items-center text-xs text-zinc-500 mt-3">
+                  <div className="flex text-left py-2 justify-between items-center text-xs text-zinc-500 mt-3">
                     <span>By {img.author}</span>
                     <span>{img.date}</span>
                   </div>
-                  <div className="flex flex-wrap gap-2 px-4 py-2 mt-2">
+                  <div className="flex flex-wrap gap-2 py-2 mt-2">
 
                     {img.tags?.map((tag) => (
                       <div
                         key={tag + Math.random()}
-                        className="w-fit bg-[#1a1a1a] px-2 text-xs text-center rounded-full  text-zinc-400"
+                        className="text-xs px-2 py-1 bg-[#1a1a1a] text-[#8b949e] rounded-full border border-[#2a2a2a]"
                       >
-                        {tag}
+                        #{tag}
                       </div>
                     ))}
 
+                  </div>
                   </div>
                 </motion.div>
               ))}
@@ -311,7 +312,7 @@ export default function Home() {
           >
             <Link
               to="/blogs"
-              className="px-4 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:bg-gradient-to-r hover:from-purple-800 hover:to-pink-800 hover:scale-105 transition-all duration-300 inline-block"
+              className=" py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 hover:bg-gradient-to-r hover:from-purple-800 hover:to-pink-800 hover:scale-105 transition-all duration-300 inline-block"
             >
               View All Articles
             </Link>
