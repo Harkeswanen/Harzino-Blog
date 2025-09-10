@@ -5,9 +5,9 @@ import { NavLink } from "react-router-dom";
 export default function Footer() {
   return (
     <footer className="bg-black relative text-zinc-500 z-[120] py-12 px-6 w-full border-t text-sm border-zinc-800">
-      <div className="max-w-6xl mx-auto grid pb-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10 ">
+      <div className="max-w-6xl mx-auto grid pb-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 ">
         {/* Logo + Description */}
-        <div className="col-span-2">
+        <div className="lg:col-span-2">
           <motion.h2
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -182,7 +182,7 @@ export default function Footer() {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-6xl mx-auto text-center py-4 border-t border-zinc-800 bg-black text-zinc-400"
+        className="max-w-6xl mx-auto text-center text-xs py-4 border-t border-zinc-800 bg-black text-zinc-500"
       >
         © 2025 Harzino. All Rights Reserved.
       </motion.div>

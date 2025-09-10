@@ -7,6 +7,7 @@ import { useEffect, useState, useRef } from "react";
 import { Clock } from "lucide-react";
 import { BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 interface ImageData {
   src: string;
@@ -73,7 +74,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <section className="relative w-full min-h-screen flex flex-col justify-center items-center text-center bg-black text-white overflow-hidden ">
+      <section className="relative w-full min-h-screen flex flex-col justify-center items-center text-center px-1 bg-gradient-to-br from-[#050505] via-[#0a0a0a] to-[#0f0f0f] text-white overflow-hidden ">
         {images.map((img, index) => (
           <motion.div
             key={index}
@@ -175,7 +176,7 @@ export default function Home() {
 
         {/* Buttons */}
         <motion.div
-          className="flex gap-4 mt-8 z-90"
+          className="flex gap-4 mt-8 z-90 sm:flex-row flex-col justify-center items-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -187,16 +188,16 @@ export default function Home() {
             },
           }}
         >
-          <motion.a
-            href="#work"
-            className="bg-[#dc0073] px-8 py-3 z-90 rounded-full font-semibold text-white hover:bg-pink-700 hover:scale-105  duration-300 transition-all"
+          <NavLink
+            to='/blogs'
+            className="bg-[#dc0073] px-6 py-1 z-90 rounded-full whitespace-nowrap text-lg font-semibold text-white hover:bg-pink-700 hover:scale-105  duration-300 transition-all"
           >
             Explore Our Work
-          </motion.a>
+          </NavLink>
 
           <motion.button
             onClick={scrollToFeatured}
-            className="border border-[#dc0073] bg-white inline-flex items-center justify-center gap-2 whitespace-nowrap z-90 h-fit px-7 py-2.5 text-center rounded-full font-semibold text-pink-700 hover:bg-[#dc0073] hover:text-white duration-300 transition-all cursor-pointer"
+            className="border border-[#dc0073] bg-white inline-flex text-lg items-center justify-center gap-2 whitespace-nowrap z-90 h-fit px-6 py-1 text-center rounded-full font-semibold text-pink-700 hover:bg-[#dc0073] hover:text-white duration-300 transition-all cursor-pointer"
           >
             View Featured
           </motion.button>
@@ -217,13 +218,13 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section id="featured" ref={nextSectionRef} className="py-16 bg-black text-white">
+      <section id="featured" ref={nextSectionRef} className="py-20 px-4 bg-black text-white">
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.8 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 1 }}
-          className="w-[80vw] mx-auto text-center"
+          className="max-w-7xl mx-auto text-center"
         >
           <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-500 to-pink-600 bg-[length:200%_200%] text-transparent bg-clip-text gradient-animation mb-2">
             Featured Stories
@@ -233,7 +234,7 @@ export default function Home() {
           </p>
 
           {/* Blog Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {images
               .filter((img) => img.featured)
               .slice(0, 4)
@@ -242,10 +243,11 @@ export default function Home() {
                   initial={{ opacity: 0, scaleY: 0 }}
                   whileInView={{ opacity: 1, scaleY: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.5 + idx * 0.3, duration: 1 }}
+                  
+                  transition={{ delay: 0 + idx*0.1, duration:0.4,ease: "easeOut" }}
                   key={idx}
                   onClick={() => handleImageClick(img)}
-                  className="group cursor-pointer bg-[#0a0a0a] border-1  rounded-xl h-auto overflow-hidden border-[#2a2a2a] hover:border-[#dc0073]/30 shadow hover:shadow-pink-500/20  hover:text-pink-600 hover:scale-105 transition-all  ease-in-out"
+                  className="group cursor-pointer bg-[#0a0a0a] border-1  rounded-xl h-auto overflow-hidden border-[#2a2a2a] hover:border-[#dc0073]/30 shadow hover:shadow-pink-500/20  hover:text-pink-600 hover:scale-105 transition-all duration-600 ease-in-out"
                 >
                   <div className="relative h-fit">
                     <img
@@ -298,7 +300,7 @@ export default function Home() {
                   </div>
                 </motion.div>
               ))}
-          </div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}

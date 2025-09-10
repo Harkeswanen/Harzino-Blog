@@ -42,7 +42,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed w-full flex items-center justify-between px-6 py-4 bg-[#050505]/95 backdrop-blur-md border-b border-[#353535] z-[1000]">
+    <nav className="fixed w-full flex items-center justify-between  py-4 bg-[#050505]/95 backdrop-blur-md border-b border-[#353535] z-[1000]">
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full">
       {/* Logo */}
       <h6 className="text-pink-600 font-bold text-2xl sm:text-md cursor-pointer transition-transform duration-200 hover:scale-110">
         Harzino
@@ -108,14 +110,14 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Nav links */}
-          <ul className="flex flex-col gap-2 text-sm pt-1 border-t-1 border-zinc-800">
+          <ul className="flex flex-col gap-0 text-sm pt-1 border-t-1 border-zinc-800">
             {navItems.map((item) => (
               <li key={item.name}>
                 <NavLink
                   to={item.href}
                   onClick={toggleMenu}
                   className={({ isActive }) =>
-                    `block px-3 py-2 rounded-md font-semibold transition ${
+                    `block px-1 py-2 rounded-md font-semibold transition ${
                       isActive ? "bg-pink-900/30 text-pink-500" : "text-zinc-300 hover:text-pink-500"
                     }`
                   }
@@ -143,6 +145,7 @@ const Navbar: React.FC = () => {
           </form>
         </div>
       )}
+      </div>
     </nav>
   );
 };
