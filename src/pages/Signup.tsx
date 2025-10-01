@@ -1,104 +1,99 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import ReactiveBackground from "../components/ReactiveBackground";
 
 const AuthForm: React.FC = () => {
   const [isSignup, setIsSignup] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#050505] via-[#0a0a0a] to-[#0f0f0f] text-white">
-      
+    <ReactiveBackground>
+      <div className="flex flex-1 text-white items-center justify-center px-4">
+      {/* Auth Form Card */}
+      <div className="relative w-full max-w-md max-h-[80vh] overflow-scroll no-scrollbar rounded-2xl p-8 shadow-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+        {/* Glow Border Effect */}
+        <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-r from-[#c4035d] to-[#a305d8] opacity-20 blur-2xl" />
 
-      <div className="flex flex-1">
-        
+        <h2 className="text-center text-4xl font-extrabold mb-8 bg-gradient-to-r from-[#c4035d] to-[#a305d8] bg-clip-text text-transparent">
+          {isSignup ? "Create Account" : "Welcome Back"}
+        </h2>
 
-        {/* Auth Form Card */}
-        <div className="flex flex-1 items-center justify-center p-6">
-          <div className="w-full max-w-md bg-zinc-900 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-gray-700">
-            <h2 className="text-center text-3xl font-bold mb-6">
-              {isSignup ? "Create Account" : "Welcome Back"}
-            </h2>
-
-            <form className="space-y-5">
-              {isSignup && (
-                <div>
-                  <label className="block text-sm font-medium mb-1">Full Name</label>
-                  <input
-                    type="text"
-                    placeholder="John Doe"
-                    className="w-full px-4 py-3 bg-black rounded-lg border border-gray-600 focus:ring-2 focus:ring-indigo-500 outline-none"
-                  />
-                </div>
-              )}
-
-              <div>
-                <label className="block text-sm font-medium mb-1">Email</label>
-                <input
-                  type="email"
-                  placeholder="you@example.com"
-                  className="w-full px-4 py-3 bg-black rounded-lg border border-gray-600 focus:ring-2 focus:ring-indigo-500 outline-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-1">Password</label>
-                <input
-                  type="password"
-                  placeholder="••••••••"
-                  className="w-full px-4 py-3 bg-black rounded-lg border border-gray-600 focus:ring-2 focus:ring-indigo-500 outline-none"
-                />
-              </div>
-
-              {isSignup && (
-                <div>
-                  <label className="block text-sm font-medium mb-1">Confirm Password</label>
-                  <input
-                    type="password"
-                    placeholder="••••••••"
-                    className="w-full px-4 py-3 bg-black rounded-lg border border-gray-600 focus:ring-2 focus:ring-indigo-500 outline-none"
-                  />
-                </div>
-              )}
-
-              <button
-                type="submit"
-                className="w-full py-3 bg-pink-600 hover:bg-pink-800 rounded-lg font-semibold text-white transition"
-              >
-                {isSignup ? "Sign Up" : "Sign In"}
-              </button>
-            </form>
-
-            <div className="my-6 flex items-center">
-              <hr className="flex-1 border-gray-600" />
-              <span className="px-4 text-gray-400">OR</span>
-              <hr className="flex-1 border-gray-600" />
+        <form className="space-y-5">
+          {isSignup && (
+            <div>
+              <label className="block text-sm font-medium mb-2">Full Name</label>
+              <input
+                type="text"
+                placeholder="John Doe"
+                className="w-full px-4 py-3 bg-black/50 rounded-lg border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-500 outline-none transition"
+              />
             </div>
+          )}
 
-            <button
-              type="button"
-              className="flex items-center justify-center gap-3 w-full py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition"
-            >
-              <FcGoogle className="text-xl" />
-              Continue with Google
-            </button>
-
-            <p className="mt-6 text-center text-sm text-gray-400">
-              {isSignup ? "Already have an account?" : "Don't have an account?"}{" "}
-              <button
-                onClick={() => setIsSignup(!isSignup)}
-                className="text-indigo-400 hover:underline"
-              >
-                {isSignup ? "Sign In" : "Sign Up"}
-              </button>
-            </p>
+          <div>
+            <label className="block text-sm font-medium mb-2">Email</label>
+            <input
+              type="email"
+              placeholder="you@example.com"
+              className="w-full px-4 py-3 bg-black/50 rounded-lg border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-500 outline-none transition"
+            />
           </div>
-        </div>
-      </div>
 
-      {/* Footer */}
-      <footer className="py-4 text-center text-sm text-gray-500">
-        &copy; {new Date().getFullYear()} Harzino. All rights reserved.
-      </footer>
+          <div>
+            <label className="block text-sm font-medium mb-2">Password</label>
+            <input
+              type="password"
+              placeholder="••••••••"
+              className="w-full px-4 py-3 bg-black/50 rounded-lg border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-500 outline-none transition"
+            />
+          </div>
+
+          {isSignup && (
+            <div>
+              <label className="block text-sm font-medium mb-2">Confirm Password</label>
+              <input
+                type="password"
+                placeholder="••••••••"
+                className="w-full px-4 py-3 bg-black/50 rounded-lg border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-500 outline-none transition"
+              />
+            </div>
+          )}
+
+          <button
+            type="submit"
+            className="w-full py-3 rounded-lg font-semibold text-white transition bg-gradient-to-r from-[#c4035d] to-[#a305d8] hover:from-[#ff0066] hover:to-[#b918ee] shadow-lg shadow-pink-900/30"
+          >
+            {isSignup ? "Sign Up" : "Sign In"}
+          </button>
+        </form>
+
+        {/* Divider */}
+        <div className="my-6 flex items-center">
+          <hr className="flex-1 border-gray-600" />
+          <span className="px-4 text-gray-400 text-sm">OR</span>
+          <hr className="flex-1 border-gray-600" />
+        </div>
+
+        {/* Google Button */}
+        <button
+          type="button"
+          className="flex items-center justify-center gap-3 w-full py-3 bg-white/10 hover:bg-white/20 rounded-lg transition border border-gray-600"
+        >
+          <FcGoogle className="text-xl" />
+          Continue with Google
+        </button>
+
+        <p className="mt-8 text-center text-sm text-gray-400">
+          {isSignup ? "Already have an account?" : "Don’t have an account?"}{" "}
+          <button
+            onClick={() => setIsSignup(!isSignup)}
+            className="text-pink-400 hover:underline"
+          >
+            {isSignup ? "Sign In" : "Sign Up"}
+          </button>
+        </p>
+      </div>
     </div>
+    </ReactiveBackground>
   );
 };
 

@@ -88,6 +88,14 @@
   }
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
 .gradient-animation {
   background-size: 600% 600%;
   animation: gradient-flow 8s ease infinite;
