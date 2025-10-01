@@ -10,6 +10,7 @@ import BlogPage from "./pages/BlogPage";
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import CookiePolicy from "./pages/CookiesPage";
+import AuthForm from "./pages/Signup";
 
 function App() {
   // Global scroll restoration prevention
@@ -24,12 +25,12 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/blogs" element={<BlogPage />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/cookies" element={<CookiePolicy />} />
           <Route path="/community" element={<Community />} />
+          <Route path="/auth" element={<AuthForm />} />
         </Routes>
       </div>
     </>
